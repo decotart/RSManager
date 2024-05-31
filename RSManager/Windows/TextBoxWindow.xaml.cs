@@ -15,33 +15,19 @@ using System.Windows.Shapes;
 namespace RSManager.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AddEditWindow.xaml
+    /// Логика взаимодействия для TextBoxWindow.xaml
     /// </summary>
-    public partial class AddEditWindow : Window
+    public partial class TextBoxWindow : Window
     {
-        public AddEditWindow()
+        public TextBoxWindow()
         {
             InitializeComponent();
         }
 
-        private void btnAddEdit_Click(object sender, RoutedEventArgs e)
+        private void btnDone_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnAddPart_Click(object sender, RoutedEventArgs e)
-        {
-
+            AllData.Data.TbWindowResult = tbValue.Text;
+            Close();
         }
     }
 }

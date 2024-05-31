@@ -20,5 +20,9 @@ namespace RSManager.AllData
         public static Worker? workerTable;
 
         public static int? selectedTableIndex;
+
+        public static bool? isAddingUser = false;
+
+        public static string? TbWindowResult;
     }
 }

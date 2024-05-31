@@ -1,4 +1,5 @@
 ﻿
+using System.DirectoryServices.ActiveDirectory;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using RSManager.DataBase;
+using RSManager.Windows;
 
 namespace RSManager
 {
@@ -32,17 +34,20 @@ namespace RSManager
 
                 using (RepairShopContext db = new())
                 {
-                    var gen = db.Autorizations.Single(x => x.UserName == login);
+                    try
+                    {
+                        var gen = db.Autorizations.Single(x => x.UserName == login);
 
-                    if (gen != null)
-                    {
-                        GeneralWindow win = new();
-                        win.Show();
-                        Close();
+                        if (gen != null)
+                        {
+                            GeneralWindow win = new();
+                            win.Show();
+                            Close();
+                        }
                     }
-                    else
+                    catch
                     {
-                        MessageBox.Show("Неверный логин или пароль!");
+                        MessageBox.Show("Такого пользователя не существует!");
                     }
                 }
             }
@@ -54,7 +59,10 @@ namespace RSManager
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
+            AllData.Data.isAddingUser = false;
 
+            RegWindow win = new();
+            win.ShowDialog();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

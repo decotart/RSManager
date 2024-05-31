@@ -5,8 +5,455 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RSManager.Windows"
         mc:Ignorable="d"
-        Title="AddEditWindow" Height="450" Width="800">
+        Title="Добавить запись" Height="650" Width="400" WindowStartupLocation="CenterScreen" 
+        ResizeMode="CanMinimize" FontFamily="Bookman Old Style" FontWeight="Bold" FontSize="15" Loaded="Window_Loaded">
     <Grid>
-        
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Source="/images/icon.png"/>
+
+        <Grid Grid.Row="1" Visibility="Hidden" x:Name="gridCars">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/> 
+                <RowDefinition/> 
+            </Grid.RowDefinitions>
+
+            <Label Content="Марка"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="50,0,0,0"/>
+
+            <TextBox VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Grid.Row="0"
+                     Margin="0,0,50,0"
+                     Height="70"
+                     Width="200"
+                     Background="White"
+                     BorderBrush="Pink"
+                     Foreground="Black"
+                     BorderThickness="5"
+                     x:Name="tbCarBrand"/>
+
+            <Label Content="Модель"
+                   Grid.Row="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="50,0,0,0"/>
+
+            <TextBox VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Grid.Row="1"
+                     Margin="0,0,50,0"
+                     Height="70"
+                     Width="200"
+                     Background="White"
+                     BorderBrush="Pink"
+                     Foreground="Black"
+                     BorderThickness="5"
+                     x:Name="tbCarModel"/>
+
+            <Label Content="Мощность"
+                   Grid.Row="2"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="50,0,0,0"/>
+
+            <TextBox VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Grid.Row="2"
+                     Margin="0,0,50,0"
+                     Height="70"
+                     Width="200"
+                     Background="White"
+                     BorderBrush="Pink"
+                     Foreground="Black"
+                     BorderThickness="5"
+                     x:Name="tbCarHorsepower"/>
+
+        </Grid>
+
+        <Grid x:Name="gridClients" Visibility="Hidden" Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Content="ФИО"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="50,0,0,0"/>
+
+            <TextBox VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Grid.Row="0"
+                     Margin="0,0,50,0"
+                     Height="70"
+                     Width="200"
+                     Background="White"
+                     BorderBrush="Pink"
+                     Foreground="Black"
+                     BorderThickness="5"
+                     x:Name="tbClientsFio"/>
+
+            <Label Content="Номер телефона"
+                   Grid.Row="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="5,0,0,0"/>
+
+            <TextBox VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Grid.Row="1"
+                     Margin="0,0,50,0"
+                     Height="70"
+                     Width="200"
+                     Background="White"
+                     BorderBrush="Pink"
+                     Foreground="Black"
+                     BorderThickness="5"
+                     x:Name="tbClientsPhoneNumber"/>
+
+            <Label Content="Дата рождения"
+                   Grid.Row="2"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="10,0,0,0"/>
+
+            <DatePicker Grid.Row="2"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,50,0"
+                        Height="70"
+                        Width="200"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        x:Name="dpClientsBirthday"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"/>
+
+        </Grid>
+
+        <Grid x:Name="gridWorkers" Visibility="Hidden" Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Content="ФИО"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="50,0,0,0"/>
+
+            <TextBox VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Grid.Row="0"
+                     Margin="0,0,50,0"
+                     Height="70"
+                     Width="200"
+                     Background="White"
+                     BorderBrush="Pink"
+                     Foreground="Black"
+                     BorderThickness="5"
+                     x:Name="tbWorkersFio"/>
+
+            <Label Content="Номер телефона"
+                   Grid.Row="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="5,0,0,0"/>
+
+            <TextBox VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Grid.Row="1"
+                     Margin="0,0,50,0"
+                     Height="70"
+                     Width="200"
+                     Background="White"
+                     BorderBrush="Pink"
+                     Foreground="Black"
+                     BorderThickness="5"
+                     x:Name="tbWorkersPhoneNumber"/>
+
+            <Label Content="Дата рождения"
+                   Grid.Row="2"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="10,0,0,0"/>
+
+            <DatePicker Grid.Row="2"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,50,0"
+                        Height="70"
+                        Width="200"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        x:Name="dpWorkersBirthday"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"/>
+
+            <Label Content="Должность"
+                   Grid.Row="3"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="25,0,0,0"/>
+
+            <TextBox VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Grid.Row="3"
+                     Margin="0,0,50,0"
+                     Height="70"
+                     Width="200"
+                     Background="White"
+                     BorderBrush="Pink"
+                     Foreground="Black"
+                     BorderThickness="5"
+                     x:Name="tbWorkersPost"/>
+
+            <Label Content="Опыт"
+                   Grid.Row="4"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="50,0,0,0"/>
+
+            <TextBox VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Grid.Row="4"
+                     Margin="0,0,50,0"
+                     Height="70"
+                     Width="200"
+                     Background="White"
+                     BorderBrush="Pink"
+                     Foreground="Black"
+                     BorderThickness="5"
+                     x:Name="tbWorkersExperience"/>
+        </Grid>
+
+        <Grid x:Name="gridParts" Visibility="Hidden" Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Запчасть"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="30,0,0,0"/>
+
+            <TextBox VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Grid.Row="0"
+                     Margin="0,0,50,0"
+                     Height="70"
+                     Width="200"
+                     Background="White"
+                     BorderBrush="Pink"
+                     Foreground="Black"
+                     BorderThickness="5"
+                     x:Name="tbPartsName"/>
+
+            <Label Content="Количество"
+                   Grid.Row="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="20,0,0,0"/>
+
+            <TextBox VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Grid.Row="1"
+                     Margin="0,0,50,0"
+                     Height="70"
+                     Width="200"
+                     Background="White"
+                     BorderBrush="Pink"
+                     Foreground="Black"
+                     BorderThickness="5"
+                     x:Name="tbPartsCount"/>
+
+            <Label Content="Стоимость"
+                   Grid.Row="2"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="25,0,0,0"/>
+
+            <TextBox VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Grid.Row="2"
+                     Margin="0,0,50,0"
+                     Height="70"
+                     Width="200"
+                     Background="White"
+                     BorderBrush="Pink"
+                     Foreground="Black"
+                     BorderThickness="5"
+                     x:Name="tbPartsSum"/>
+
+            <Label Content="Автомобиль"
+                   Grid.Row="3"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="20,0,0,0"/>
+
+            <ComboBox VerticalAlignment="Center"
+                      HorizontalAlignment="Right"
+                      Grid.Row="3"
+                      Margin="0,0,50,0"
+                      Height="70"
+                      Width="200"
+                      Background="White"
+                      BorderBrush="Pink"
+                      Foreground="Black"
+                      BorderThickness="5"
+                      x:Name="cbPartsAuto"/>
+        </Grid>
+
+
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Background="White"
+                    BorderBrush="Pink"
+                    Foreground="Black"
+                    BorderThickness="5"
+                    x:Name="btnAddEdit"
+                    Height="70"
+                    Width="170"
+                    Content="Добавить"
+                    Click="btnAddEdit_Click"/>
+
+            <Button Background="White"
+                    BorderBrush="Pink"
+                    Foreground="Black"
+                    BorderThickness="5"
+                    Height="70"
+                    Width="170"
+                    Content="Отменить"
+                    Click="btnCancel_Click"
+                    Grid.Column="1"/>
+        </Grid>
+
+        <Grid  x:Name="gridWorks" Visibility="Hidden" Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Клиент"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="20,0,0,0"/>
+
+            <ComboBox VerticalAlignment="Center"
+                      HorizontalAlignment="Right"
+                      Grid.Row="0"
+                      Margin="0,0,50,0"
+                      Height="70"
+                      Width="200"
+                      Background="White"
+                      BorderBrush="Pink"
+                      Foreground="Black"
+                      BorderThickness="5"
+                      x:Name="cbWorksClient"/>
+
+            <Label Content="Автомобиль"
+                   Grid.Row="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="20,0,0,0"/>
+
+            <ComboBox VerticalAlignment="Center"
+                      HorizontalAlignment="Right"
+                      Grid.Row="1"
+                      Margin="0,0,50,0"
+                      Height="70"
+                      Width="200"
+                      Background="White"
+                      BorderBrush="Pink"
+                      Foreground="Black"
+                      BorderThickness="5"
+                      x:Name="cbWorksAuto"/>
+
+            <Label Content="Работник"
+                   Grid.Row="2"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="20,0,0,0"/>
+
+            <ComboBox VerticalAlignment="Center"
+                      HorizontalAlignment="Right"
+                      Grid.Row="2"
+                      Margin="0,0,50,0"
+                      Height="70"
+                      Width="200"
+                      Background="White"
+                      BorderBrush="Pink"
+                      Foreground="Black"
+                      BorderThickness="5"
+                      x:Name="cbWorksWorker"/>
+
+            <Label Content="Стоимость"
+                   Grid.Row="3"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="20,0,0,0"/>
+
+            <TextBox VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Grid.Row="3"
+                     Margin="0,0,50,0"
+                     Height="70"
+                     Width="200"
+                     Background="White"
+                     BorderBrush="Pink"
+                     Foreground="Black"
+                     BorderThickness="5"
+                     x:Name="tbCoastOfWork"/>
+
+            <Button Grid.Row="4"
+                    Height="70"
+                    Width="250"
+                    Background="White"
+                    BorderBrush="Pink"
+                    Foreground="Black"
+                    BorderThickness="5"
+                    Content="Добавить запчасть"
+                    Click="btnAddPart_Click"/>
+
+        </Grid>
+
     </Grid>
 </Window>

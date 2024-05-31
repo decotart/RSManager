@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RSManager"
         mc:Ignorable="d"
-        Title="Главная" Height="800" Width="1400" ResizeMode="CanMinimize" Loaded="Window_Loaded">
+        Title="Главная" Height="800" Width="1400" ResizeMode="CanMinimize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -263,7 +263,7 @@
 
         </Grid>
 
-        <Grid Grid.Column="1" x:Name="GridQuery" Visibility="Hidden">
+        <Grid Grid.Column="1" x:Name="GridQuery" Visibility="Visible">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.5*"/>
@@ -283,7 +283,6 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <Button Grid.Column="0"
@@ -298,16 +297,8 @@
                         FontWeight="DemiBold"
                         Click="btnLostParts_Click"/>
 
-                <TextBox Grid.Column="1"
-                         BorderThickness="5"
-                         BorderBrush="Pink"
-                         FontFamily="Bookman Old Style"
-                         FontSize="20"
-                         FontWeight="DemiBold"
-                         x:Name="tbWorksId"/>
-
-                <Button Grid.Column="0"
-                        Grid.Row="1"
+                <Button Grid.Column="1"
+                        Grid.Row="0"
                         Background="White"
                         BorderBrush="Pink"
                         Foreground="Black"
@@ -318,20 +309,8 @@
                         FontWeight="DemiBold"
                         Click="btnZeroParts_Click"/>
 
-                <Button Grid.Column="1"
-                        Grid.Row="1"
-                        Background="White"
-                        BorderBrush="Pink"
-                        Foreground="Black"
-                        BorderThickness="5"
-                        FontFamily="Bookman Old Style"
-                        Content="Самый мощный автомобиль"
-                        FontSize="20"
-                        FontWeight="DemiBold"
-                        Click="btnMostPowerfulAuto_Click"/>
-
                 <Button Grid.Column="0"
-                        Grid.Row="2"
+                        Grid.Row="1"
                         Background="White"
                         BorderBrush="Pink"
                         Foreground="Black"
@@ -342,7 +321,7 @@
                         FontWeight="DemiBold"
                         Click="btnMostPricefullPart_Click"/>
 
-                <Button Grid.Column="1"
+                <Button Grid.Column="0"
                         Grid.Row="2"
                         Background="White"
                         BorderBrush="Pink"
@@ -354,8 +333,8 @@
                         FontWeight="DemiBold"
                         Click="btnMostPricefulWork_Click"/>
 
-                <Button Grid.Column="0"
-                        Grid.Row="3"
+                <Button Grid.Column="1"
+                        Grid.Row="1"
                         Background="White"
                         BorderBrush="Pink"
                         Foreground="Black"

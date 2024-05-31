@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using RSManager.DataBase;
+using RSManager.Windows;
 
 namespace RSManager
 {
@@ -330,11 +332,6 @@ namespace RSManager
 
         }
 
-        private void btnMostPowerfulAuto_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnMostPricefullPart_Click(object sender, RoutedEventArgs e)
         {
 
@@ -357,17 +354,47 @@ namespace RSManager
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
+            AllData.Data.isAddingUser = true;
 
+            RegWindow win = new();
+
+            win.ShowDialog();
         }
 
         private void btnChangeUser_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow win = new();
 
+            win.Show();
+
+            Close();
         }
 
         private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
         {
+            TextBoxWindow win = new();
 
+            win.Title = "Введите имя пользователя";
+            win.ShowDialog();
+
+            using (RepairShopContext _db = new())
+            {
+                try
+                {
+                    var gen = _db.Autorizations.Single(x => x.UserName == AllData.Data.TbWindowResult);
+
+                    _db.Autorizations.Remove(gen);
+                    _db.SaveChanges();
+                }
+                catch (NullReferenceException)
+                {
+                    MessageBox.Show("Такого пользователя не существует!");
+                }
+                catch (Exception ex)
+                {
+                    ErrorEcho(ex);
+                }
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
