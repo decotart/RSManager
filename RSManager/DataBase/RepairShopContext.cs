@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Microsoft.EntityFrameworkCore;
 
-namespace RSM.DataBase;
+namespace RSManager.DataBase;
 
 public partial class RepairShopContext : DbContext
 {
@@ -29,8 +30,10 @@ public partial class RepairShopContext : DbContext
 
     public virtual DbSet<WorksPart> WorksParts { get; set; }
 
+    string dbpath = Path.GetFullPath("RepairShop.db").Replace("bin\\Debug\\net8.0-windows\\RepairShop.db", "DataBase\\RepairShop.db");
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlite("DataSource=D:\\C# codes\\RSM\\RSM\\DataBase\\RepairShop.db");
+        => optionsBuilder.UseSqlite($"datasource={dbpath}");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

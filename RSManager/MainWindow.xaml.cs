@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
+using RSManager.DataBase;
 
 namespace RSManager
 {
@@ -28,28 +29,20 @@ namespace RSManager
             {
                 string login = tbLogin.Text,
                 password = pbPass.Password;
-                bool access = false;
 
                 using (RepairShopContext db = new())
                 {
-                    var gen = db.Autorizations.FromSql($"select * from Autorization where UserName = '{login}'").ToList();
+                    var gen = db.Autorizations.Single(x => x.UserName == login);
 
-                    foreach (var i in gen)
+                    if (gen != null)
                     {
-                        if (i.UserPassword == password)
-                        {
-                            access = true;
-                        }
-                    }
-
-                    if (access)
-                    {
-                        MessageBox.Show("da");
+                        GeneralWindow win = new();
+                        win.Show();
+                        Close();
                     }
                     else
                     {
-                        MessageBox.Show("net");
-
+                        MessageBox.Show("Неверный логин или пароль!");
                     }
                 }
             }

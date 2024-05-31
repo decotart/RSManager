@@ -1,0 +1,429 @@
+﻿<Window x:Class="RSManager.GeneralWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RSManager"
+        mc:Ignorable="d"
+        Title="Главная" Height="800" Width="1400" ResizeMode="CanMinimize" Loaded="Window_Loaded">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.3*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Image Source="/images/icon.png"/>
+
+            <Button Grid.Row="1"
+                    Background="Pink"
+                    BorderBrush="Pink"
+                    Foreground="White"
+                    FontFamily="Bookman Old Style"
+                    Content="Таблицы"
+                    FontSize="40"
+                    FontWeight="DemiBold"
+                    Click="btnTables_Click"/>
+
+            <Button Grid.Row="2"
+                    Background="Pink"
+                    BorderBrush="Pink"
+                    Foreground="White"
+                    FontFamily="Bookman Old Style"
+                    Content="Запросы"
+                    FontSize="40"
+                    FontWeight="DemiBold"
+                    Click="btnQuery_Click"/>
+
+            <Button Grid.Row="3"
+                    Background="Pink"
+                    BorderBrush="Pink"
+                    Foreground="White"
+                    FontFamily="Bookman Old Style"
+                    Content="Настройки"
+                    FontSize="40"
+                    FontWeight="DemiBold"
+                    Click="btnSettings_Click"/>
+
+            <Button Grid.Row="4"
+                    Background="Pink"
+                    BorderBrush="Pink"
+                    Foreground="White"
+                    FontFamily="Bookman Old Style"
+                    Content="Справка"
+                    FontSize="40"
+                    FontWeight="DemiBold"
+                    Click="btnInfo_Click"/>
+
+            <Button Grid.Row="5"
+                    Background="Pink"
+                    BorderBrush="Pink"
+                    Foreground="White"
+                    FontFamily="Bookman Old Style"
+                    Content="Выход"
+                    FontSize="40"
+                    FontWeight="DemiBold"
+                    Click="btnExit_Click"/>
+
+        </Grid>
+
+        <Grid x:Name="GridTables" Grid.Column="1" Visibility="Hidden">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.13*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1.3*"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Автомобили"
+                        FontSize="23"
+                        FontWeight="DemiBold"
+                        Click="btnAuto_Click"/>
+
+                <Button Grid.Column="1"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Клиенты"
+                        FontSize="23"
+                        FontWeight="DemiBold"
+                        Click="btnClients_Click"/>
+
+                <Button Grid.Column="2"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Работники"
+                        FontSize="23"
+                        FontWeight="DemiBold"
+                        Click="btnWorkers_Click"/>
+
+                <Button Grid.Column="3"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Запчасти"
+                        FontSize="23"
+                        FontWeight="DemiBold"
+                        Click="btnParts_Click"/>
+
+                <Button Grid.Column="4"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Работы"
+                        FontSize="23"
+                        FontWeight="DemiBold"
+                        Click="btnWorks_Click"/>
+
+            </Grid>
+
+            <DataGrid Grid.Row="1" x:Name="dataGridAuto" Visibility="Hidden" IsReadOnly="True" AutoGenerateColumns="False">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Width="2*" Header="Марка" Binding="{Binding Brand}"/>
+                    <DataGridTextColumn Width="2*" Header="Модель" Binding="{Binding Model}"/>
+                    <DataGridTextColumn Width="1.5*" Header="Мощность л.с." Binding="{Binding HorsePower}"/>
+                </DataGrid.Columns>
+                
+            </DataGrid>
+
+            <DataGrid Grid.Row="1" x:Name="dataGridClientts" Visibility="Hidden" IsReadOnly="True" AutoGenerateColumns="False">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Width="2*" Header="ФИО" Binding="{Binding Fio}"/>
+                    <DataGridTextColumn Width="2*" Header="Номер телефона" Binding="{Binding PhoneNumber}"/>
+                    <DataGridTextColumn Width="1.5*" Header="Дата рождения" Binding="{Binding Birthday}"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+            <DataGrid Grid.Row="1" x:Name="dataGridWorkers" Visibility="Hidden" IsReadOnly="True" AutoGenerateColumns="False">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Width="2.2*" Header="ФИО" Binding="{Binding Fio}"/>
+                    <DataGridTextColumn Width="1.5*" Header="Должность" Binding="{Binding Post}"/>
+                    <DataGridTextColumn Width="1*" Header="Опыт работы, г." Binding="{Binding Experience}"/>
+                    <DataGridTextColumn Width="2*" Header="Номер телефона" Binding="{Binding PhoneNumber}"/>
+                    <DataGridTextColumn Width="1.5*" Header="Дата рождения" Binding="{Binding Birthday}"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+            <DataGrid Grid.Row="1" x:Name="dataGridParts" Visibility="Hidden" IsReadOnly="True" AutoGenerateColumns="False">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Width="2.2*" Header="Название детали" Binding="{Binding PartName}"/>
+                    <DataGridTextColumn Width="1.5*" Header="Количество" Binding="{Binding PartCount}"/>
+                    <DataGridTextColumn Width="1.5*" Header="Стоимость, руб" Binding="{Binding PartSum}"/>
+                    <DataGridTextColumn Width="2*" Header="Подходящие машины" Binding="{Binding SuitableCar}"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+            <DataGrid Grid.Row="1" x:Name="dataGridWorks" Visibility="Visible" IsReadOnly="True" AutoGenerateColumns="False">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Width="2*" Header="Клиент" Binding="{Binding Client}"/>
+                    <DataGridTextColumn Width="2*" Header="Автомобиль" Binding="{Binding Car}"/>
+                    <DataGridTextColumn Width="2*" Header="Работник" Binding="{Binding Worker}"/>
+                    <DataGridTextColumn Width="2*" Header="Стоимость, руб" Binding="{Binding SumOfWork}"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+            <Grid Grid.Row="2">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Добавить"
+                        FontSize="23"
+                        FontWeight="DemiBold"
+                        Click="btnAdd_Click"
+                        Width="250"
+                        Height="150"/>
+
+                <Button Grid.Column="1"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Изменить"
+                        FontSize="23"
+                        FontWeight="DemiBold"
+                        Click="btnEdit_Click"
+                        Width="250"
+                        Height="150"/>
+
+                <Button Grid.Column="2"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Удалить"
+                        FontSize="23"
+                        FontWeight="DemiBold"
+                        Click="btnDelete_Click"
+                        Width="250"
+                        Height="150"/>
+
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Column="1" x:Name="GridQuery" Visibility="Hidden">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <DataGrid x:Name="dataGridQuery"/>
+
+            <Grid Grid.Row="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Column="0"
+                        Grid.Row="0"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Посмотреть потраченные запчасти"
+                        FontSize="20"
+                        FontWeight="DemiBold"
+                        Click="btnLostParts_Click"/>
+
+                <TextBox Grid.Column="1"
+                         BorderThickness="5"
+                         BorderBrush="Pink"
+                         FontFamily="Bookman Old Style"
+                         FontSize="20"
+                         FontWeight="DemiBold"
+                         x:Name="tbWorksId"/>
+
+                <Button Grid.Column="0"
+                        Grid.Row="1"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Посмотреть кончившиеся запчасти"
+                        FontSize="20"
+                        FontWeight="DemiBold"
+                        Click="btnZeroParts_Click"/>
+
+                <Button Grid.Column="1"
+                        Grid.Row="1"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Самый мощный автомобиль"
+                        FontSize="20"
+                        FontWeight="DemiBold"
+                        Click="btnMostPowerfulAuto_Click"/>
+
+                <Button Grid.Column="0"
+                        Grid.Row="2"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Самая дорогая запчасть"
+                        FontSize="20"
+                        FontWeight="DemiBold"
+                        Click="btnMostPricefullPart_Click"/>
+
+                <Button Grid.Column="1"
+                        Grid.Row="2"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Самая дорогая работа"
+                        FontSize="20"
+                        FontWeight="DemiBold"
+                        Click="btnMostPricefulWork_Click"/>
+
+                <Button Grid.Column="0"
+                        Grid.Row="3"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Самая дешевая запчасть"
+                        FontSize="20"
+                        FontWeight="DemiBold"
+                        Click="btnLessPricefulPart_Click"/>
+
+                <Button Grid.Column="1"
+                        Grid.Row="3"
+                        Background="White"
+                        BorderBrush="Pink"
+                        Foreground="Black"
+                        BorderThickness="5"
+                        FontFamily="Bookman Old Style"
+                        Content="Самая дешевая работа"
+                        FontSize="20"
+                        FontWeight="DemiBold"
+                        Click="btnLessPricefulWork_Click"/>
+                
+            </Grid>
+            
+        </Grid>
+
+        <Grid Grid.Column="1" x:Name="gridSettings" Visibility="Hidden">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0"
+                    Background="White"
+                    BorderBrush="Pink"
+                    Foreground="Black"
+                    BorderThickness="5"
+                    FontFamily="Bookman Old Style"
+                    Content="Добавить пользователя"
+                    FontSize="23"
+                    FontWeight="DemiBold"
+                    Click="btnAddUser_Click"/>
+
+            <Button Grid.Row="1"
+                    Background="White"
+                    BorderBrush="Pink"
+                    Foreground="Black"
+                    BorderThickness="5"
+                    FontFamily="Bookman Old Style"
+                    Content="Сменить пользователя"
+                    FontSize="23"
+                    FontWeight="DemiBold"
+                    Click="btnChangeUser_Click"/>
+
+            <Button Grid.Row="2"
+                    Background="White"
+                    BorderBrush="Pink"
+                    Foreground="Black"
+                    BorderThickness="5"
+                    FontFamily="Bookman Old Style"
+                    Content="Удалить пользователя"
+                    FontSize="23"
+                    FontWeight="DemiBold"
+                    Click="btnDeleteUser_Click"/>
+
+        </Grid>
+        
+    </Grid>
+</Window>

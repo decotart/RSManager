@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RSM.DataBase;
+namespace RSManager.DataBase;
 
 public partial class Car
 {

@@ -18,7 +18,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Image  Source="/images/icon.PNG" />
+       
 
         <Label Content="Вход"
            Grid.Row="1"
@@ -106,6 +106,7 @@
             Background="White"
             BorderBrush="Pink"
             Click="btnExit_Click"/>
+        <Image Source="/images/icon.png"/>
 
     </Grid>
 </Window>
