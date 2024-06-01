@@ -329,7 +329,8 @@
                       BorderBrush="Pink"
                       Foreground="Black"
                       BorderThickness="5"
-                      x:Name="cbPartsAuto"/>
+                      x:Name="cbPartsAuto"
+                      SelectedItem="{Binding Path=SuitableCarNavigation}"/>
         </Grid>
 
 

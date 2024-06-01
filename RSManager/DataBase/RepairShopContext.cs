@@ -30,6 +30,8 @@ public partial class RepairShopContext : DbContext
 
     public virtual DbSet<WorksPart> WorksParts { get; set; }
 
+    public DbSet<PartsBrandsView> PartsBrandsView { get; set; }
+
     string dbpath = Path.GetFullPath("RepairShop.db").Replace("bin\\Debug\\net8.0-windows\\RepairShop.db", "DataBase\\RepairShop.db");
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

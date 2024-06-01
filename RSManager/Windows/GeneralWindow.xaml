@@ -156,10 +156,10 @@
             <DataGrid Grid.Row="1" x:Name="dataGridAuto" Visibility="Hidden" IsReadOnly="True" AutoGenerateColumns="False">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Width="2*" Header="Марка" Binding="{Binding Brand}"/>
-                    <DataGridTextColumn Width="2*" Header="Модель" Binding="{Binding Model}"/>
-                    <DataGridTextColumn Width="1.5*" Header="Мощность л.с." Binding="{Binding HorsePower}"/>
+                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Path=Id}"/>
+                    <DataGridTextColumn Width="2*" Header="Марка" Binding="{Binding Path=Brand}"/>
+                    <DataGridTextColumn Width="2*" Header="Модель" Binding="{Binding Path=Model}"/>
+                    <DataGridTextColumn Width="1.5*" Header="Мощность л.с." Binding="{Binding Path=HorsePower}"/>
                 </DataGrid.Columns>
                 
             </DataGrid>
@@ -167,10 +167,10 @@
             <DataGrid Grid.Row="1" x:Name="dataGridClientts" Visibility="Hidden" IsReadOnly="True" AutoGenerateColumns="False">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Width="2*" Header="ФИО" Binding="{Binding Fio}"/>
-                    <DataGridTextColumn Width="2*" Header="Номер телефона" Binding="{Binding PhoneNumber}"/>
-                    <DataGridTextColumn Width="1.5*" Header="Дата рождения" Binding="{Binding Birthday}"/>
+                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Path=Id}"/>
+                    <DataGridTextColumn Width="2*" Header="ФИО" Binding="{Binding Path=Fio}"/>
+                    <DataGridTextColumn Width="2*" Header="Номер телефона" Binding="{Binding Path=PhoneNumber}"/>
+                    <DataGridTextColumn Width="1.5*" Header="Дата рождения" Binding="{Binding Path=Birthday}"/>
                 </DataGrid.Columns>
 
             </DataGrid>
@@ -178,12 +178,12 @@
             <DataGrid Grid.Row="1" x:Name="dataGridWorkers" Visibility="Hidden" IsReadOnly="True" AutoGenerateColumns="False">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Width="2.2*" Header="ФИО" Binding="{Binding Fio}"/>
-                    <DataGridTextColumn Width="1.5*" Header="Должность" Binding="{Binding Post}"/>
-                    <DataGridTextColumn Width="1*" Header="Опыт работы, г." Binding="{Binding Experience}"/>
-                    <DataGridTextColumn Width="2*" Header="Номер телефона" Binding="{Binding PhoneNumber}"/>
-                    <DataGridTextColumn Width="1.5*" Header="Дата рождения" Binding="{Binding Birthday}"/>
+                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Path=Id}"/>
+                    <DataGridTextColumn Width="2.2*" Header="ФИО" Binding="{Binding Path=Fio}"/>
+                    <DataGridTextColumn Width="1.5*" Header="Должность" Binding="{Binding Path=Post}"/>
+                    <DataGridTextColumn Width="1*" Header="Опыт работы, г." Binding="{Binding Path=Experience}"/>
+                    <DataGridTextColumn Width="2*" Header="Номер телефона" Binding="{Binding Path=PhoneNumber}"/>
+                    <DataGridTextColumn Width="1.5*" Header="Дата рождения" Binding="{Binding Path=Birthday}"/>
                 </DataGrid.Columns>
 
             </DataGrid>
@@ -191,23 +191,23 @@
             <DataGrid Grid.Row="1" x:Name="dataGridParts" Visibility="Hidden" IsReadOnly="True" AutoGenerateColumns="False">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Width="2.2*" Header="Название детали" Binding="{Binding PartName}"/>
-                    <DataGridTextColumn Width="1.5*" Header="Количество" Binding="{Binding PartCount}"/>
-                    <DataGridTextColumn Width="1.5*" Header="Стоимость, руб" Binding="{Binding PartSum}"/>
-                    <DataGridTextColumn Width="2*" Header="Подходящие машины" Binding="{Binding SuitableCar}"/>
+                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Path=Id}"/>
+                    <DataGridTextColumn Width="2.2*" Header="Название детали" Binding="{Binding Path=PartName}"/>
+                    <DataGridTextColumn Width="1.5*" Header="Количество" Binding="{Binding Path=PartCount}"/>
+                    <DataGridTextColumn Width="1.5*" Header="Стоимость, руб" Binding="{Binding Path=PartSum}"/>
+                    <DataGridTextColumn Width="1.5*" Header="Подходящие авто" Binding="{Binding Path=Brand}"/>
                 </DataGrid.Columns>
 
             </DataGrid>
 
-            <DataGrid Grid.Row="1" x:Name="dataGridWorks" Visibility="Visible" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid Grid.Row="1" x:Name="dataGridWorks" Visibility="Hidden" IsReadOnly="True" AutoGenerateColumns="False">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Width="2*" Header="Клиент" Binding="{Binding Client}"/>
-                    <DataGridTextColumn Width="2*" Header="Автомобиль" Binding="{Binding Car}"/>
-                    <DataGridTextColumn Width="2*" Header="Работник" Binding="{Binding Worker}"/>
-                    <DataGridTextColumn Width="2*" Header="Стоимость, руб" Binding="{Binding SumOfWork}"/>
+                    <DataGridTextColumn Width="0.5*" Header="ID" Binding="{Binding Path=Id}"/>
+                    <DataGridTextColumn Width="2*" Header="Клиент" Binding="{Binding Path=Client}"/>
+                    <DataGridTextColumn Width="2*" Header="Автомобиль" Binding="{Binding Path=Car}"/>
+                    <DataGridTextColumn Width="2*" Header="Работник" Binding="{Binding Path=Worker}"/>
+                    <DataGridTextColumn Width="2*" Header="Стоимость, руб" Binding="{Binding Path=SumOfWork}"/>
                 </DataGrid.Columns>
 
             </DataGrid>
@@ -263,7 +263,7 @@
 
         </Grid>
 
-        <Grid Grid.Column="1" x:Name="GridQuery" Visibility="Visible">
+        <Grid Grid.Column="1" x:Name="GridQuery" Visibility="Hidden">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.5*"/>

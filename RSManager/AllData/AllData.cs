@@ -19,10 +19,16 @@ namespace RSManager.AllData
 
         public static Worker? workerTable;
 
+        public static PartsBrandsView? partsBrandsView;
+
         public static int? selectedTableIndex;
 
         public static bool? isAddingUser = false;
 
         public static string? TbWindowResult;
+
+        public static bool? isEditing;
+        
     }
+
 }

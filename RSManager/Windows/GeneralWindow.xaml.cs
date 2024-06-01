@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -88,6 +89,8 @@ namespace RSManager
         {
             try
             {
+                AllData.Data.isEditing = false;
+
                 Windows.AddEditWindow win = new();
                 win.Owner = this;
 
@@ -150,6 +153,8 @@ namespace RSManager
         {
             try
             {
+                AllData.Data.isEditing = true;
+
                 Windows.AddEditWindow win = new();
                 win.Owner = this;
 
@@ -199,7 +204,9 @@ namespace RSManager
 
                         if (dataGridParts.SelectedItem != null)
                         {
-                            AllData.Data.partTable = (Part)dataGridParts.SelectedItem;
+                            var gen = dataGridParts.SelectedItem;
+
+                            AllData.Data.partsBrandsView = (PartsBrandsView)dataGridParts.SelectedItem;                          
 
                             win.ShowDialog();
 
@@ -452,8 +459,8 @@ namespace RSManager
                 _db.Works.Load();
                 dataGridWorks.ItemsSource = _db.Works.ToList();
 
-                _db.Parts.Load();
-                dataGridParts.ItemsSource = _db.Parts.ToList();
+                _db.PartsBrandsView.Load();
+                dataGridParts.ItemsSource = _db.PartsBrandsView.ToList();
 
                 _db.Clients.Load();
                 dataGridClientts.ItemsSource = _db.Clients.ToList();
