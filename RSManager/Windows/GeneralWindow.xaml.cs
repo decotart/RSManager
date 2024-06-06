@@ -34,17 +34,17 @@ namespace RSManager
 
         private void btnTables_Click(object sender, RoutedEventArgs e)
         {
-            EnableGrid(_gridlist, GridTables);
+            EnableGrid(GridTables);
         }
 
         private void btnQuery_Click(object sender, RoutedEventArgs e)
         {
-            EnableGrid(_gridlist, GridQuery);
+            EnableGrid(GridQuery);
         }
 
         private void btnSettings_Click(object sender, RoutedEventArgs e)
         {
-            EnableGrid(_gridlist, gridSettings);
+            EnableGrid(gridSettings);
         }
 
         private void btnInfo_Click(object sender, RoutedEventArgs e)
@@ -62,27 +62,27 @@ namespace RSManager
 
         private void btnAuto_Click(object sender, RoutedEventArgs e)
         {
-            EnableDataGrid(_datagridlist, dataGridAuto, 0);
+            EnableDataGrid(dataGridAuto, 0);
         }
 
         private void btnClients_Click(object sender, RoutedEventArgs e)
         {
-            EnableDataGrid(_datagridlist, dataGridClientts, 1);
+            EnableDataGrid(dataGridClientts, 1);
         }
 
         private void btnWorkers_Click(object sender, RoutedEventArgs e)
         {
-            EnableDataGrid(_datagridlist, dataGridWorkers, 2);
+            EnableDataGrid(dataGridWorkers, 2);
         }
 
         private void btnParts_Click(object sender, RoutedEventArgs e)
         {
-            EnableDataGrid(_datagridlist, dataGridParts, 3);
+            EnableDataGrid(dataGridParts, 3);
         }
 
         private void btnWorks_Click(object sender, RoutedEventArgs e)
         {
-            EnableDataGrid(_datagridlist, dataGridWorks, 4);
+            EnableDataGrid(dataGridWorks, 4);
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -134,7 +134,7 @@ namespace RSManager
                         break;
 
                     case 4:
-                        AllData.Data.workTable = null;
+                        AllData.Data.worksInformation = null;
 
                         win.ShowDialog();
 
@@ -206,7 +206,7 @@ namespace RSManager
                         {
                             var gen = dataGridParts.SelectedItem;
 
-                            AllData.Data.partsBrandsView = (PartsBrandsView)dataGridParts.SelectedItem;                          
+                            AllData.Data.partsBrandsView = (PartsBrandsView)dataGridParts.SelectedItem;
 
                             win.ShowDialog();
 
@@ -219,7 +219,7 @@ namespace RSManager
 
                         if (dataGridWorks.SelectedItem != null)
                         {
-                            AllData.Data.workTable = (Work)dataGridWorks.SelectedItem;
+                            AllData.Data.worksInformation = (WorksInformationEdited)dataGridWorks.SelectedItem;
 
                             win.ShowDialog();
 
@@ -426,18 +426,18 @@ namespace RSManager
             }
         }
 
-        public void EnableGrid(List<Grid> list, Grid element)
+        public void EnableGrid(Grid element)
         {
-            foreach (var i in list)
+            foreach (var i in _gridlist)
             {
                 i.Visibility = Visibility.Hidden;
             }
             element.Visibility = Visibility.Visible;
         }
 
-        public void EnableDataGrid(List<DataGrid> list, DataGrid element, int id)
+        public void EnableDataGrid(DataGrid element, int id)
         {
-            foreach (var i in list)
+            foreach (var i in _datagridlist)
             {
                 i.Visibility = Visibility.Hidden;
             }
@@ -456,8 +456,8 @@ namespace RSManager
                 _db.Workers.Load();
                 dataGridWorkers.ItemsSource = _db.Workers.ToList();
 
-                _db.Works.Load();
-                dataGridWorks.ItemsSource = _db.Works.ToList();
+                _db.WorksInformationEdited.Load();
+                dataGridWorks.ItemsSource = _db.WorksInformationEdited.ToList();
 
                 _db.PartsBrandsView.Load();
                 dataGridParts.ItemsSource = _db.PartsBrandsView.ToList();

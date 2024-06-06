@@ -21,6 +21,8 @@ namespace RSManager.AllData
 
         public static PartsBrandsView? partsBrandsView;
 
+        public static WorksInformationEdited? worksInformation;
+
         public static int? selectedTableIndex;
 
         public static bool? isAddingUser = false;

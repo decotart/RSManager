@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RSManager.DataBase;
 
@@ -10,9 +11,11 @@ using RSManager.DataBase;
 namespace RSManager.Migrations
 {
     [DbContext(typeof(RepairShopContext))]
-    partial class RepairShopContextModelSnapshot : ModelSnapshot
+    [Migration("20240606180314_AddWorksInformation")]
+    partial class AddWorksInformation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
@@ -213,32 +216,6 @@ namespace RSManager.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("WorksInformation");
-                });
-
-            modelBuilder.Entity("RSManager.DataBase.WorksInformationEdited", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Car")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Client")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("SuOfWork")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Worker")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WorksInformationEdited");
                 });
 
             modelBuilder.Entity("RSManager.DataBase.WorksPart", b =>
