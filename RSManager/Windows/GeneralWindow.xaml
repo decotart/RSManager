@@ -207,7 +207,7 @@
                     <DataGridTextColumn Width="2*" Header="Клиент" Binding="{Binding Path=Client}"/>
                     <DataGridTextColumn Width="2*" Header="Автомобиль" Binding="{Binding Path=Car}"/>
                     <DataGridTextColumn Width="2*" Header="Работник" Binding="{Binding Path=Worker}"/>
-                    <DataGridTextColumn Width="2*" Header="Стоимость, руб" Binding="{Binding Path=SuOfWork}"/>
+                    <DataGridTextColumn Width="2*" Header="Стоимость, руб" Binding="{Binding Path=SumOfWork}"/>
                 </DataGrid.Columns>
 
             </DataGrid>

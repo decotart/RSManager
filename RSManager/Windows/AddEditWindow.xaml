@@ -329,8 +329,7 @@
                       BorderBrush="Pink"
                       Foreground="Black"
                       BorderThickness="5"
-                      x:Name="cbPartsAuto"
-                      SelectedItem="{Binding Path=SuitableCarNavigation}"/>
+                      x:Name="cbPartsAuto"/>
         </Grid>
 
 
@@ -452,7 +451,8 @@
                     Foreground="Black"
                     BorderThickness="5"
                     Content="Добавить запчасть"
-                    Click="btnAddPart_Click"/>
+                    Click="btnAddPart_Click"
+                    x:Name="btnAddPart"/>
 
         </Grid>
 

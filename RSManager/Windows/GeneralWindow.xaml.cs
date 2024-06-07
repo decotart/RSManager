@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -252,7 +253,12 @@ namespace RSManager
 
                                 if (dataGridAuto.SelectedItem != null)
                                 {
-                                    _db.Cars.Remove((Car)dataGridAuto.SelectedItem);
+                                    _db.Cars.Remove(new Car
+                                    {
+                                        Id = _db.Cars.Where(x => x.Id == ((Car)dataGridAuto.SelectedItem).Id)
+                                        .Select(x => x.Id)
+                                        .FirstOrDefault()
+                                    });
                                     _db.SaveChanges();
 
                                     MessageBox.Show("Запись успешно удалена!");
@@ -266,7 +272,13 @@ namespace RSManager
 
                                 if (dataGridClientts.SelectedItem != null)
                                 {
-                                    _db.Clients.Remove((Client)dataGridClientts.SelectedItem);
+                                    _db.Clients.Remove(new Client
+                                    {
+                                        Id = _db.Clients.Where(x => x.Id == ((Client)dataGridClientts.SelectedItem).Id)
+                                        .Select(x => x.Id)
+                                        .FirstOrDefault()
+                                    });
+
                                     _db.SaveChanges();
 
                                     MessageBox.Show("Запись успешно удалена!");
@@ -280,7 +292,13 @@ namespace RSManager
 
                                 if (dataGridWorkers.SelectedItem != null)
                                 {
-                                    _db.Workers.Remove((Worker)dataGridWorkers.SelectedItem);
+                                    _db.Workers.Remove(new Worker
+                                    {
+                                        Id = _db.Workers.Where(x => x.Id == ((Worker)dataGridWorkers.SelectedItem).Id)
+                                        .Select(x => x.Id)
+                                        .FirstOrDefault()
+                                    });
+
                                     _db.SaveChanges();
 
                                     MessageBox.Show("Запись успешно удалена!");
@@ -294,7 +312,13 @@ namespace RSManager
 
                                 if (dataGridParts.SelectedItem != null)
                                 {
-                                    _db.Parts.Remove((Part)dataGridParts.SelectedItem);
+                                    _db.Parts.Remove(new Part
+                                    {
+                                        Id = _db.Parts.Where(x => x.Id == ((PartsBrandsView)dataGridParts.SelectedItem).Id)
+                                        .Select(x => x.Id)
+                                        .FirstOrDefault()
+                                    });
+
                                     _db.SaveChanges();
 
                                     MessageBox.Show("Запись успешно удалена!");
@@ -308,7 +332,13 @@ namespace RSManager
 
                                 if (dataGridWorks.SelectedItem != null)
                                 {
-                                    _db.Works.Remove((Work)dataGridWorks.SelectedItem);
+                                    _db.Works.Remove(new Work
+                                    {
+                                        Id = _db.Works.Where(x => x.Id == ((WorksInformationEdited)dataGridWorks.SelectedItem).Id)
+                                        .Select(x => x.Id)
+                                        .FirstOrDefault()
+                                    });
+
                                     _db.SaveChanges();
 
                                     MessageBox.Show("Запись успешно удалена!");
@@ -322,6 +352,10 @@ namespace RSManager
                         }
                     }
                 }
+                catch (DbUpdateException)
+                {
+                    MessageBox.Show("Запись не может быть удалена т.к. используется в другой записи.");
+                }
                 catch (Exception ex)
                 {
                     ErrorEcho(ex);
@@ -331,32 +365,84 @@ namespace RSManager
 
         private void btnLostParts_Click(object sender, RoutedEventArgs e)
         {
+            TextBoxWindow win = new();
 
+            win.Title = "Введите ID работы";
+
+            win.ShowDialog();
+
+            using (RepairShopContext _db = new())
+            {
+                var query = from wp in _db.WorksParts
+                            join p in _db.Parts on wp.PartId equals p.Id
+                            select new
+                            {
+                                WorkId = wp.WorksId,
+                                PartsName = p.PartName,
+                                PartCount = wp.CountOfParts
+                            };
+
+                var gen = query.Where(x => x.WorkId == Convert.ToInt32(AllData.Data.TbWindowResult)).ToList();
+
+                if (gen == null)
+                {
+                    MessageBox.Show("Записи запчастей в этой работе нет");
+                }
+                else
+                {
+                    dataGridQuery.ItemsSource = gen;
+                }
+            }
         }
 
         private void btnZeroParts_Click(object sender, RoutedEventArgs e)
         {
+            using (RepairShopContext _db = new())
+            {
+                var gen = _db.Parts.Where(x => x.PartCount == 0).ToList();
 
+                dataGridQuery.ItemsSource = gen;
+            }
         }
 
         private void btnMostPricefullPart_Click(object sender, RoutedEventArgs e)
         {
+            using (RepairShopContext _db = new())
+            {
+                var gen = _db.Parts.Where(x => x.PartSum == _db.Parts.Max(x => x.PartSum)).ToList();
 
+                dataGridQuery.ItemsSource = gen;
+            }
         }
 
         private void btnMostPricefulWork_Click(object sender, RoutedEventArgs e)
         {
+            using (RepairShopContext _db = new())
+            {
+                var gen = _db.Works.Where(x => x.SumOfWork == _db.Works.Max(x => x.SumOfWork)).ToList();
 
+                dataGridQuery.ItemsSource = gen;
+            }
         }
 
         private void btnLessPricefulWork_Click(object sender, RoutedEventArgs e)
         {
+            using (RepairShopContext _db = new())
+            {
+                var gen = _db.Works.Where(x => x.SumOfWork == _db.Works.Min(x => x.SumOfWork)).ToList();
 
+                dataGridQuery.ItemsSource = gen;
+            }
         }
 
         private void btnLessPricefulPart_Click(object sender, RoutedEventArgs e)
         {
+            using (RepairShopContext _db = new())
+            {
+                var gen = _db.Parts.Where(x => x.PartSum == _db.Parts.Min(x => x.PartSum)).ToList();
 
+                dataGridQuery.ItemsSource = gen;
+            }
         }
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
