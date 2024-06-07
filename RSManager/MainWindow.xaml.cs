@@ -38,11 +38,15 @@ namespace RSManager
                     {
                         var gen = db.Autorizations.Single(x => x.UserName == login);
 
-                        if (gen != null)
+                        if (gen != null && gen.UserPassword == password)
                         {
                             GeneralWindow win = new();
                             win.Show();
                             Close();
+                        }
+                        if (gen.UserPassword != password)
+                        {
+                            MessageBox.Show("Пароль не верный!");
                         }
                     }
                     catch
